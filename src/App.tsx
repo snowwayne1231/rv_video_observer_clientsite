@@ -1,14 +1,32 @@
 import React from 'react';
-import './styles/App.css';
+import './styles/App.scss';
+import VideoComponment from './VideoComponment';
+import HeaderComponment from './HeaderComponment';
+
 
 function App() {
+
+  React.useEffect(() => {
+    console.log('App Mounted.')
+    if (!("Notification" in window)) {
+      console.log("Browser does not support Desktop Notification");
+      return
+    } else {
+      console.log("Notifications are supported");
+    }
+
+    Notification.requestPermission();
+  })
+
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <HeaderComponment></HeaderComponment>
       </header>
+      <div className="App-content">
+        <VideoComponment></VideoComponment>
+
+      </div>
     </div>
   );
 }
