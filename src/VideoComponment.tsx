@@ -19,14 +19,13 @@ function VideoComponment() {
   const [focusVidName, setFocusVidName] = useState('');
   const sortedRanking:any[] = [];
   listVideos.forEach(video => {
-    let weight = video.wrongs.format || 0;
+    let weight = video.wrongs.overtime || 0;
     if (video.status === vStatus.OPEN) {
-        
-        weight += video.wrongs.datetime * 2;
-        weight += video.wrongs.overtime * 4;
-        weight += video.warning.format ? 8 : 0;
-        weight += video.warning.datetime ? 16 : 0;
-        weight += video.warning.overtime ? 64 : 0;
+        // weight += video.wrongs.datetime * 2;
+        // weight += video.wrongs.overtime * 4;
+        weight += video.warning.format ? 4 : 0;
+        weight += video.warning.datetime ? 8 : 0;
+        weight += video.warning.overtime ? 16 : 0;
     } else {
         weight = -1;
     }
@@ -129,6 +128,7 @@ function VideoComponment() {
                                 'video-warning-format': rank.video.warning.format,
                                 'video-warning-overtime': rank.video.warning.overtime,
                                 'video-failed': rank.weight == -1,
+                                'video-on-focus': rank.video.id === focusVidName,
                             })}
                             onClick={onClickRanking}
                         >

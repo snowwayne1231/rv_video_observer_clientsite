@@ -35,7 +35,12 @@
       background-color: #000;
       text-align: center;
       // transition: all 0.5s ease ;
-      
+      &.video-on-focus{
+        border-color: #96f4ff;
+        animation: none;
+        color: #e8f8ff;
+        text-shadow: #333 1px 2px 2px;
+      }
       &.video-warning-format {
         animation: blingFormatWarning 1s ease infinite;
       }
@@ -52,16 +57,6 @@
         border-color: #000;
         color: #666;
       }
-      &.video-on-focus{
-        
-        background-color: #3e5255;
-        border-color: #96f4ff;
-        animation: none;
-        color: #e8f8ff;
-        text-shadow: #333 1px 2px 2px;
-      }
-
-      
     }
 
     .video-content {
